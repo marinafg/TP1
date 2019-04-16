@@ -19,12 +19,12 @@ Matriz::~Matriz()
 }
 
 Matriz::Matriz(const Matriz &m){ //construtor de copia
-//	_numeroColunas = new int;
-//	_numeroLinhas = new int;
+    _numeroColunas = m._numeroColunas;
+    _numeroLinhas = m._numeroLinhas;
 }
 
 void Matriz::setCols(){
-	cin >> _numeroColunas;	
+	cin >> _numeroColunas;
 }
 
 void Matriz::setRows(){
