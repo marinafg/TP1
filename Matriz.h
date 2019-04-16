@@ -6,8 +6,8 @@ using namespace std;
 class Matriz
 {
 	private:
-		int _linhas;
-		int _colunas;
+		int _numeroLinhas;
+		int _numeroColunas;
 		
 	public:
 		Matriz(); // cria uma matriz vazia com números de linhas e colunas iguais a 0
@@ -16,8 +16,10 @@ class Matriz
 												  			os valores da matriz preenchidos com a variável valor.*/
 		Matriz(const Matriz &m);  //construtor de cópia
 		~Matriz(); // destrutor 
-		void set_colunas();
-		void set_linhas();
+		void setCols();
+		void setRows();
+		int getRows();
+		int getCols();
 		
 	protected:
 };

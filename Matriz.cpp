@@ -4,25 +4,29 @@ using namespace std;
 
 
 Matriz::Matriz(int linhas, int colunas, const double &valor){
-	_colunas = colunas;
-	_linhas = linhas;
+	_numeroColunas = colunas;
+	_numeroLinhas = linhas;
 }
 
 Matriz::Matriz()
 {
+	_numeroColunas = 0;
+	_numeroLinhas = 0;
 }
 
 Matriz::~Matriz()
 {
 }
 
-Matriz::Matriz(const Matriz &m){
+Matriz::Matriz(const Matriz &m){ //construtor de copia
+//	_numeroColunas = new int;
+//	_numeroLinhas = new int;
 }
 
-void Matriz::set_colunas(){
-	cin >> _colunas;	
+void Matriz::setCols(){
+	cin >> _numeroColunas;	
 }
 
-void Matriz::set_linhas(){
-	cin >> _linhas;
+void Matriz::setRows(){
+	cin >> _numeroLinhas;
 }
