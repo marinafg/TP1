@@ -8,11 +8,19 @@ estruturas criadas dinamicamente na memória através do uso de ponteiros duplos
 simples). 
 
 Operacoes de matrizes no MatLab:
+
 eye - cria matriz identidade
+
 zeros - cria matriz com todos os elementos iguais a zero
+
 dot - produto interno (entre vetores)
+
 cross - produto cruzado (entre vetores)
+
 .* - multiplicação entre matrizes elemento por elemento
+
 +,-, * - operações aritméticas (entre números ou entre matrizes)
+
 det - determinante de uma matriz
+
 trace - traço da uma matriz
