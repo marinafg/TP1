@@ -8,6 +8,7 @@ class Matriz
 	private:
 		int _numeroLinhas;
 		int _numeroColunas;
+		double _valor;
 		
 	public:
 		Matriz(); // cria uma matriz vazia com números de linhas e colunas iguais a 0
@@ -20,6 +21,9 @@ class Matriz
 		void setRows();
 		int getRows();
 		int getCols();
+		void eye(int, int); // cria matriz identidade
+		float det(); // calcula o determinante
+		float trace(); // calcula o traco
 		
 	protected:
 };
