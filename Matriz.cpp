@@ -87,6 +87,11 @@ Matriz Matriz::operator+(const Matriz& a) const{
 	}
 	else {
 		Matriz resp(a._numeroLinhas, a._numeroColunas);
-		
+        for (int i=0; i<_numeroLinhas; i++){
+            for (int j = 0; j<_numeroColunas; j++){
+                resp.val[i][j] = val[i][j] + a.val[i][j];
+            }
+        }
+        	return resp;
 	}
 }
