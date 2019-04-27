@@ -26,13 +26,13 @@ class Matriz
 		float trace(); // calcula o traco
 		void zeros(); // cria matriz com tds elementos iguais a 0
 
-		Matriz operator+(const Matriz&) const;
-		Matriz operator*(const Matriz&) const;
-		Matriz operator-(const Matriz&) const;
-		Matriz operator+=(const Matriz&);
-		Matriz operator=(const Matriz&);
-		bool operator!=(const Matriz&) const;
-		bool operator==(const Matriz&) const;
+		Matriz operator+(const Matriz&) const; //feito
+		Matriz operator*(const Matriz&) const; //feito
+		Matriz operator-(const Matriz&) const; //feito
+		Matriz operator+=(const Matriz&); //feito
+		Matriz operator=(const Matriz&); //feito
+		bool operator!=(const Matriz&) const; //feito
+		bool operator==(const Matriz&) const; //feito
 		friend istream& operator >> (istream&, Matriz&);
 		friend ostream& operator << (ostream&, const Matriz&);
 		Matriz& operator-=(const Matriz&);
