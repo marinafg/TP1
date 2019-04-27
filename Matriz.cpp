@@ -92,6 +92,26 @@ Matriz Matriz::operator+(const Matriz& a) const{
                 resp.val[i][j] = val[i][j] + a.val[i][j];
             }
         }
-        	return resp;
+        return resp;
 	}
+}
+
+Matriz Matriz::operator*(const Matriz& a) const{
+    if (_numeroColunas != a._numeroLinhas){
+       cout << "operacao invalida. numero de linhas invalido" << endl;
+    }
+    else {
+        Matriz resp(_numeroLinhas, a._numeroColunas);
+        double aux;
+        for (int i=0; i<_numeroLinhas; i++){
+            for (int j=0; j<a._numeroColunas; j++){
+                aux = 0;
+                for (int k=0; k<_numeroLinhas; k++){
+                    aux += val[i][k]*a.val[k][j];
+                }
+                resp.val[i][j] = aux;
+            }
+        }
+        return resp;
+    }
 }
