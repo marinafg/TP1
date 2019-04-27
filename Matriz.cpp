@@ -130,3 +130,75 @@ Matriz Matriz::operator-(const Matriz &a) const {
 		return resp;
 	}
 }
+
+Matriz Matriz::operator+=(const Matriz& a) {
+    if (_numeroLinhas != a._numeroLinhas || _numeroColunas != a._numeroColunas){
+		cout << "operacao invalida. matrizes de dimencoes diferentes." << endl;
+	}
+	else {
+        for (int i=0; i<_numeroLinhas; i++){
+            for (int j = 0; j<_numeroColunas; j++){
+                val[i][j] = val[i][j] + a.val[i][j];
+            }
+        }
+        return *this;
+	}
+}
+
+Matriz Matriz::operator=(const Matriz& a){
+    if(this == &a){
+        return *this;
+    }else{
+        if(val != NULL){
+          for(int i = 0; i<_numeroLinhas; i++) // libera as linhas
+            delete[] val[i];
+          delete[] val;
+        }
+        _numeroLinhas = a._numeroLinhas;
+        _numeroColunas = a._numeroColunas;
+
+        val = new double*[_numeroLinhas]; //aloca o numero de linhas da matriz
+        for(int i=0; i<_numeroLinhas; i++){ //aloca o numero de colunas para cada linha
+            val[i] = new double[_numeroColunas];
+            for(int j=0; j<_numeroColunas; j++)
+                val[i][j] = a.val[i][j];
+        }
+        return *this;
+    }
+}
+
+bool Matriz::operator!=(const Matriz& a) const{
+    if (_numeroLinhas != a._numeroLinhas || _numeroColunas != a._numeroColunas){
+		cout << "operacao invalida. matrizes de dimencoes diferentes." << endl;
+	}
+	else {
+        int cont = 0;
+        for (int i=0; i<_numeroLinhas; i++){
+            for (int j = 0; j<_numeroColunas; j++){
+                if (val[i][j] == a.val[i][j]){
+                    cont++;
+                }
+            }
+        }
+        if (cont > 0) return false;
+        else return true;
+	}
+}
+
+bool Matriz::operator==(const Matriz& a) const{
+    if (_numeroLinhas != a._numeroLinhas || _numeroColunas != a._numeroColunas){
+		cout << "operacao invalida. matrizes de dimencoes diferentes." << endl;
+	}
+	else {
+        int cont = 0;
+        for (int i=0; i<_numeroLinhas; i++){
+            for (int j = 0; j<_numeroColunas; j++){
+                if (val[i][j] != a.val[i][j]){
+                    cont++;
+                }
+            }
+        }
+        if (cont > 0) return false;
+        else return true;
+	}
+}
