@@ -40,6 +40,8 @@ class Matriz
 		Matriz operator~();
 		Matriz& operator*=(double);
 		double& operator()(int, int);
+		
+		void printMatriz() const;
 };
 
 #endif

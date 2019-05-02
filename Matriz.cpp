@@ -202,3 +202,26 @@ bool Matriz::operator==(const Matriz& a) const{
         else return true;
 	}
 }
+
+/*istream& operator >> (istream& tcha, Matriz& a){
+	cout << "linhas: ";
+	tcha >> a._numeroLinhas;
+	cout << "colunas: ";
+	tcha >> a._numeroColunas;
+	cout << "valores: " << endl;
+	if (a.val != NULL){
+		for (int i = 0;  < a._numeroLinhas){
+			
+		}
+	}
+} */
+
+void Matriz::printMatriz() const{
+	for(int i=0; i<_numeroLinhas; i++){
+		for(int j=0; j<_numeroColunas; j++){
+			cout << val[i][j];
+		}
+		cout << endl;
+	}
+
+}
