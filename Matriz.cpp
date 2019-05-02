@@ -210,11 +210,12 @@ bool Matriz::operator==(const Matriz& a) const{
 	tcha >> a._numeroColunas;
 	cout << "valores: " << endl;
 	if (a.val != NULL){
-		for (int i = 0;  < a._numeroLinhas){
-			
+		for (int i = 0;  < a._numeroLinhas; i++){
+			delete [] a.val[i]; 
 		}
+		delete [] a.val;
 	}
-} */
+}*/
 
 void Matriz::printMatriz() const{
 	for(int i=0; i<_numeroLinhas; i++){
