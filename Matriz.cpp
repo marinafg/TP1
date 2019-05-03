@@ -199,8 +199,13 @@ bool Matriz::operator!=(const Matriz& a) const{
                 }
             }
         }
-        if (cont > 0) return false;
-        else return true;
+        if (cont > 0) {
+            cout << "false" << endl;
+            return false;
+        } else {
+            cout << "true" << endl;
+            return true;
+        }
 	}
 }
 
@@ -218,8 +223,13 @@ bool Matriz::operator==(const Matriz& a) const{
                 }
             }
         }
-        if (cont > 0) return false;
-        else return true;
+        if (cont > 0) {
+            cout << "false" << endl;
+            return false;
+        } else {
+            cout << "true" << endl;
+            return true;
+        }
 	}
 }
 
