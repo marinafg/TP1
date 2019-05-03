@@ -203,26 +203,30 @@ bool Matriz::operator==(const Matriz& a) const{
 	}
 }
 
-/*istream& operator >> (istream& tcha, Matriz& a){
-	cout << "linhas: ";
-	tcha >> a._numeroLinhas;
-	cout << "colunas: ";
-	tcha >> a._numeroColunas;
+istream& operator >> (istream& op, Matriz& a){
 	cout << "valores: " << endl;
 	if (a.val != NULL){
-		for (int i = 0;  < a._numeroLinhas; i++){
+		for (int i = 0;  i< a._numeroLinhas; i++){
 			delete [] a.val[i]; 
 		}
 		delete [] a.val;
 	}
-}*/
+	a.val = new double*[a._numeroLinhas];
+	for(int j = 0; j<a._numeroLinhas; j++){
+		a.val[j] = new double[a._numeroColunas];
+		for (int k = 0; k<a._numeroColunas; k++){
+			op >> a.val[j][k];
+		}
+	}
+	return op;
+}
 
-void Matriz::printMatriz() const{
-	for(int i=0; i<_numeroLinhas; i++){
-		for(int j=0; j<_numeroColunas; j++){
-			cout << val[i][j];
+ostream& operator << (ostream& op, const Matriz& a){
+	for (int i = 0; i < a._numeroLinhas; i++){
+		for (int j = 0; j < a._numeroColunas; j++){
+			cout << a.val[i][j] << ' ';
 		}
 		cout << endl;
-	}
-
+	}		
+	return op;
 }

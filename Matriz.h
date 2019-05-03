@@ -33,15 +33,13 @@ class Matriz
 		Matriz operator=(const Matriz&); //feito
 		bool operator!=(const Matriz&) const; //feito
 		bool operator==(const Matriz&) const; //feito
-		friend istream& operator >> (istream&, Matriz&);
-		friend ostream& operator << (ostream&, const Matriz&);
+		friend istream& operator >> (istream&, Matriz&); //feito
+		friend ostream& operator << (ostream&, const Matriz&);//feito
 		Matriz& operator-=(const Matriz&);
 		Matriz& operator*=(const Matriz&);
 		Matriz operator~();
 		Matriz& operator*=(double);
 		double& operator()(int, int);
-		
-		void printMatriz() const;
 };
 
 #endif
