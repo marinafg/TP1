@@ -30,11 +30,8 @@ int main() {
 	G.zeros();  // teste da funcao zeros
 	cout << G << endl;
 
-	//Matriz H(const Matriz &A);  TESTE QUE DEU ERRADO TO PENSANDO EM COMO FAZER AINDA
-	//H.printMatriz();
-
-	//cin >> A;
-	//cout << A << endl;
+	Matriz H(A);
+	cout << H << endl;
 
     Matriz I(2,2,1);
     Matriz J(2,2,3);
@@ -57,6 +54,12 @@ int main() {
     O = M; // teste de sobrecarda de operador =
     cout << O << endl;
 
+    I != J;  // teste de sobrecarga de operador !=
+
+    M == O;  // teste de sobrecarga de operador ==
+
+    cin >> A;
+	cout << A << endl;
 
 	return 0;
 }
