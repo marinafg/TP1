@@ -18,7 +18,7 @@ int main() {
 	cout << D << endl; // nao vai imprimir nada porque a matriz e 0 por 0
 
     Matriz E(3,3);
-	E.eye(3,3); // so roda essa funcao sem crachar o programa se voce criar uma matriz de tamanho definido NAO SEI PQ
+	E.eye(3,3); // so roda essa funcao sem crachar o programa se voce criar uma matriz de tamanho definido
     cout << endl;
 
 	Matriz F;  // teste de matriz identidade invalida
@@ -57,9 +57,29 @@ int main() {
     I != J;  // teste de sobrecarga de operador !=
 
     M == O;  // teste de sobrecarga de operador ==
+    cout << endl;
 
-    cin >> A;
-	cout << A << endl;
+    Matriz P(3,3,0);
+    cout << P << endl;
+    P.ones();  // teste da funcao ones
+    cout << P << endl;
+
+    P *= 2;  // teste de sobrecarga do operador *=
+    cout << P << endl;
+    P *= E;  // teste de sobrecarga do operador *=
+    cout << P << endl;
+
+    Matriz Q(3,3);
+    cin >> Q;
+    cout << Q << endl;
+    Q = ~Q;   // teste de sobrecarga do operador ~
+    cout << Q << endl;
+
+    A(2,1) = 10;  // teste de sobrecarga do operador ()
+    cout << A << endl;
+
+    cin >> A;   // teste de sobrecarga do operador >>
+	cout << A << endl;  // teste de sobrecarga do operador <<
 
 	return 0;
 }
