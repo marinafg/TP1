@@ -95,6 +95,13 @@ void Matriz::zeros(){
     }
 }
 
+void Matriz::ones(){
+	for(int i=0; i<_numeroLinhas; i++){
+    for(int j=0; j<_numeroColunas; j++)
+      val[i][j] = 1;
+    }
+}
+
 Matriz Matriz::operator+(const Matriz& a) const{
 	if (_numeroLinhas != a._numeroLinhas || _numeroColunas != a._numeroColunas){
 		cout << "Operacao invalida. Matrizes de dimencoes diferentes." << endl;
@@ -313,6 +320,12 @@ Matriz& Matriz::operator*=(double xis){
 	return *this;
 }
 
-double& Matriz::operator()(){
-	
+double& Matriz::operator()(int l, int c) {
+  if(l-1 >= _numeroLinhas || c-1 >= _numeroColunas){
+    static Matriz aux(_numeroLinhas, _numeroColunas);
+    cout << "Operacao invalida. Dimensao nao pode ser alterada." << endl;
+    return aux.val[0][0]; 
+
+  }else{
+    return val[l-1][c-1];}
 }
