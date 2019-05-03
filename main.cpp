@@ -33,8 +33,34 @@ int main() {
 	//Matriz H(const Matriz &A);  TESTE QUE DEU ERRADO TO PENSANDO EM COMO FAZER AINDA
 	//H.printMatriz();
 
-	cin >> A;
-	cout << A << endl;
+	//cin >> A;
+	//cout << A << endl;
+
+    Matriz I(2,2,1);
+    Matriz J(2,2,3);
+    Matriz K;
+    K = I*J;  // teste da sobrecarga de operador *
+    cout << K << endl;
+
+    Matriz M;
+    M = I-J;  // teste da sobrecarga de operador -
+    cout << M << endl;
+
+    Matriz N;
+    N += I;  // teste da sobrecarga de operador +=
+    cout << N << endl;
+
+    M += J;  // teste da sobrecarga de operador +=
+    cout << M << endl;
+
+    Matriz O;
+    O = M; // teste de sobrecarda de operador =
+    cout << O << endl;
+
+    I != J;  // teste de sobrecarga de operador !=
+
+    M == O;  // teste de sobrecarga de operador ==
+
 
 
 	return 0;
