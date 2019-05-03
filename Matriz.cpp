@@ -199,8 +199,13 @@ bool Matriz::operator!=(const Matriz& a) const{
                 }
             }
         }
-        if (cont > 0) return false;
-        else return true;
+        if (cont > 0) {            
+			cout << "false" << endl;
+            return false;
+        } else {
+            cout << "true" << endl;
+            return true;
+        }
 	}
 }
 
@@ -218,8 +223,13 @@ bool Matriz::operator==(const Matriz& a) const{
                 }
             }
         }
-        if (cont > 0) return false;
-        else return true;
+        if (cont > 0) {            
+			cout << "false" << endl;
+            return false;
+        } else {
+            cout << "true" << endl;
+            return true;
+        }
 	}
 }
 
@@ -249,4 +259,60 @@ ostream& operator << (ostream& op, const Matriz& a){
 		cout << endl;
 	}
 	return op;
+}
+
+Matriz& Matriz::operator*=(const Matriz& a){
+    if (a._numeroLinhas != a._numeroColunas){
+    	cout << "Operacao invalida. Matrizes de dimencoes diferentes." << endl;
+	}
+	
+	else if(a._numeroColunas == a._numeroLinhas){
+    Matriz aux(a._numeroLinhas, a._numeroColunas);
+
+    for(int i=0; i<a._numeroLinhas; i++){
+      for(int j=0; j<a._numeroColunas; j++)
+          aux.val[i][j] = val[i][j];
+    }
+
+    for(int i=0; i<a._numeroLinhas; i++) // libera as linhas
+        delete[] val[i];
+    delete[] val;
+
+    double s = 0;
+    val = new double*[a._numeroLinhas];
+    for(int i=0; i<a._numeroLinhas; i++){
+        val[i] = new double[a._numeroColunas];
+        for(int j=0; j< a._numeroColunas; j++){
+            val[i][j] = 0;
+            for(int k=0; k<_numeroColunas; k++)
+                val[i][j] += (aux.val[i][k] * a.val[k][j]);
+        }
+    }
+    _numeroColunas = a._numeroColunas;
+    return *this;
+}
+}
+
+Matriz Matriz::operator~(){
+	Matriz aux(_numeroLinhas, _numeroColunas);
+
+    for(int i=0; i<aux._numeroLinhas; i++){
+      for(int j=0; j<aux._numeroColunas; j++)
+          aux.val[i][j] = val[j][i];
+    }
+	
+	return aux;
+}
+
+Matriz& Matriz::operator*=(double xis){
+    for(int i=0; i<_numeroLinhas; i++){
+      for(int j=0; j<_numeroColunas; j++)
+          val[i][j] *= xis;
+    }
+	
+	return *this;
+}
+
+double& Matriz::operator()(){
+	
 }
