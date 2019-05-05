@@ -2,6 +2,12 @@
 #include <iostream>
 using namespace std;
 
+Matriz::Matriz()
+{
+	_numeroColunas = 0;
+	_numeroLinhas = 0;
+	val = NULL;
+}
 
 Matriz::Matriz(int numeroLinhas, int numeroColunas, const double &valor){
 	_numeroColunas = numeroColunas;
@@ -13,21 +19,6 @@ Matriz::Matriz(int numeroLinhas, int numeroColunas, const double &valor){
 			val[i][j] = valor;
 		}
 	}
-}
-
-Matriz::Matriz()
-{
-	_numeroColunas = 0;
-	_numeroLinhas = 0;
-	val = NULL;
-}
-
-Matriz::~Matriz()  // destrutor
-{
-	for (int i = 0; i<_numeroLinhas; i++){
-		delete[] val[i];
-	}
-	delete[] val;
 }
 
 Matriz::Matriz(const Matriz &m){    //construtor de copia
@@ -46,25 +37,29 @@ Matriz::Matriz(const Matriz &m){    //construtor de copia
 	}
 }
 
+Matriz::~Matriz()  // destrutor
+{
+	for (int i = 0; i<_numeroLinhas; i++){
+		delete[] val[i];
+	}
+	delete[] val;
+}
+
 void Matriz::setCols(){
     cout << "Digite o numero de colunas: " << endl;
 	cin >> _numeroColunas;
-	cout << _numeroColunas << endl;
 }
 
 void Matriz::setRows(){
     cout << "Digite o numero de linhas: " << endl;
 	cin >> _numeroLinhas;
-	cout << _numeroLinhas << endl;
 }
 
 int Matriz::getCols() const {
-    cout << _numeroColunas << endl;
 	return _numeroColunas;
 }
 
 int Matriz::getRows() const {
-    cout << _numeroLinhas << endl;
 	return _numeroLinhas;
 }
 
@@ -88,6 +83,27 @@ void Matriz::eye(int Linha, int Coluna){  //cria matriz identidade
     }
 }
 
+float Matriz::det(){
+
+
+}
+
+float Matriz::trace(){
+    float traco = 0;
+    if (_numeroLinhas != _numeroColunas){
+        cout << "Operacao invalida. A Matriz nao e quadrada." << endl;
+    } else {
+        for (int i=0; i<_numeroLinhas; i++){
+            for(int j=0; j<_numeroColunas; j++){
+                if(i==j){
+                    traco = traco + val[i][j];
+                }
+            }
+        }
+        return traco;
+    }
+}
+
 void Matriz::zeros(){
   for(int i=0; i<_numeroLinhas; i++){
     for(int j=0; j<_numeroColunas; j++)
@@ -97,15 +113,14 @@ void Matriz::zeros(){
 
 void Matriz::ones(){
 	for(int i=0; i<_numeroLinhas; i++){
-    for(int j=0; j<_numeroColunas; j++)
-      val[i][j] = 1;
+        for(int j=0; j<_numeroColunas; j++)
+            val[i][j] = 1;
     }
 }
 
 Matriz Matriz::operator+(const Matriz& a) const{
 	if (_numeroLinhas != a._numeroLinhas || _numeroColunas != a._numeroColunas){
 		cout << "Operacao invalida. Matrizes de dimencoes diferentes." << endl;
-		return a;
 	}
 	else {
 		Matriz resp(a._numeroLinhas, a._numeroColunas);
@@ -121,7 +136,6 @@ Matriz Matriz::operator+(const Matriz& a) const{
 Matriz Matriz::operator*(const Matriz& a) const{
     if (_numeroColunas != a._numeroLinhas){
        cout << "Operacao invalida. Numero de linhas invalido" << endl;
-       return a;
     }
     else {
         Matriz resp(_numeroLinhas, a._numeroColunas);
@@ -142,7 +156,6 @@ Matriz Matriz::operator*(const Matriz& a) const{
 Matriz Matriz::operator-(const Matriz &a) const {
 	if (_numeroLinhas != a._numeroLinhas || _numeroColunas != a._numeroColunas){
 		cout << "Operacao invalida. Matrizes de dimencoes diferentes." << endl;
-        return a;
 	}
 	else {
 		Matriz resp(a._numeroLinhas, a._numeroColunas);
@@ -158,7 +171,6 @@ Matriz Matriz::operator-(const Matriz &a) const {
 Matriz Matriz::operator+=(const Matriz& a) {
     if (_numeroLinhas != a._numeroLinhas || _numeroColunas != a._numeroColunas){
 		cout << "Operacao invalida. Matrizes de dimencoes diferentes." << endl;
-		return a;
 	}
 	else {
         for (int i=0; i<_numeroLinhas; i++){
@@ -206,7 +218,7 @@ bool Matriz::operator!=(const Matriz& a) const{
                 }
             }
         }
-        if (cont > 0) {            
+        if (cont > 0) {
 			cout << "false" << endl;
             return false;
         } else {
@@ -230,7 +242,7 @@ bool Matriz::operator==(const Matriz& a) const{
                 }
             }
         }
-        if (cont > 0) {            
+        if (cont > 0) {
 			cout << "false" << endl;
             return false;
         } else {
@@ -268,11 +280,26 @@ ostream& operator << (ostream& op, const Matriz& a){
 	return op;
 }
 
+Matriz& Matriz::operator-=(const Matriz& a){
+    if (_numeroLinhas != a._numeroLinhas || _numeroColunas != a._numeroColunas){
+		cout << "Operacao invalida. Matrizes de dimencoes diferentes." << endl;
+	}
+	else {
+        for (int i=0; i<_numeroLinhas; i++){
+            for (int j = 0; j<_numeroColunas; j++){
+                val[i][j] = val[i][j] - a.val[i][j];
+            }
+        }
+        return *this;
+	}
+
+}
+
 Matriz& Matriz::operator*=(const Matriz& a){
     if (a._numeroLinhas != a._numeroColunas){
     	cout << "Operacao invalida. Matrizes de dimencoes diferentes." << endl;
 	}
-	
+
 	else if(a._numeroColunas == a._numeroLinhas){
     Matriz aux(a._numeroLinhas, a._numeroColunas);
 
@@ -307,7 +334,7 @@ Matriz Matriz::operator~(){
       for(int j=0; j<aux._numeroColunas; j++)
           aux.val[i][j] = val[j][i];
     }
-	
+
 	return aux;
 }
 
@@ -316,7 +343,7 @@ Matriz& Matriz::operator*=(double xis){
       for(int j=0; j<_numeroColunas; j++)
           val[i][j] *= xis;
     }
-	
+
 	return *this;
 }
 
@@ -324,7 +351,7 @@ double& Matriz::operator()(int l, int c) {
   if(l-1 >= _numeroLinhas || c-1 >= _numeroColunas){
     static Matriz aux(_numeroLinhas, _numeroColunas);
     cout << "Operacao invalida. Dimensao nao pode ser alterada." << endl;
-    return aux.val[0][0]; 
+    return aux.val[0][0];
 
   }else{
     return val[l-1][c-1];}
