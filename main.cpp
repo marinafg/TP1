@@ -92,5 +92,11 @@ int main() {
     int numColunas = A.getCols();	// teste da funcao getCols
     cout << "numero de linhas: " << numLinhas << " " << "e numero de colunas: " << numColunas << endl;
 
+    Matriz S(2,2);
+    cin >> S;
+    cout << S << endl;
+    float deter = S.det();
+    cout << deter << endl;
+
     return 0;
 }
