@@ -1,4 +1,5 @@
 #include "Matriz.h"
+#include <math.h>
 #include <iostream>
 using namespace std;
 
@@ -84,8 +85,33 @@ void Matriz::eye(int Linha, int Coluna){  //cria matriz identidade
 }
 
 float Matriz::det(){
+    Matriz m(_numeroLinhas,_numeroColunas);
+    float aux_t = 0;
+    for (int i=0; i<_numeroLinhas; i++){
+        for (int k=0; k<i+1; k++){
+            aux_t = 0;
+            for (int j=0; j<k; j++){
+                aux_t += m.val[i][j] * m.val[k][j];
+            }
+            if (i==k){
+                m.val[i][k] = sqrt(val[i][i] - aux_t);
+            } else {
+                m.val[i][k] = (1.0 / m.val[k][k] * (val[i][k]-aux_t));
+            }
+        }
+    }
 
+    float multi = 1;
 
+    for (int a=0; a<m._numeroLinhas; a++){
+        for (int b=0; b<m._numeroColunas; b++){
+            if(a==b){
+                multi = multi * m.val[a][b];
+            }
+        }
+    }
+
+    return multi;
 }
 
 float Matriz::trace(){
