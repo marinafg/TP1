@@ -5,33 +5,37 @@ using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main() {
-	Matriz A(3,4,2);
-	cout << A << endl; // teste de um construtor parametrico
-	Matriz B(3,4,3);   // teste de um construtor parametrico
-	Matriz C;          // teste de um construtor padrao
-	C = A + B;         // teste da sobrecarga de operador +
-	cout << C << endl;
 
-	Matriz D;
-	D.getCols(); // pus um cout na funcao pra imprimir as
-	D.getRows(); // paradinhas
-	cout << D << endl; // nao vai imprimir nada porque a matriz e 0 por 0
+    Matriz A(3,4,2);
+    cout << A << endl; // teste de um construtor parametrico
+    Matriz B(3,4,3);   // teste de um construtor parametrico
+    Matriz C;          // teste de um construtor padrao
+    C = A + B;         // teste de sobrecarga de operador +
+    cout << C << endl;
+    C -= A;						// teste de sobrecarga de operador -=
+    cout << C << endl;
 
-    Matriz E(3,3);
-	E.eye(3,3); // so roda essa funcao sem crachar o programa se voce criar uma matriz de tamanho definido
+    float auxiliar = A.trace();   // teste da funcao trace, que calcula o traço da matriz
+    cout << auxiliar << endl;
+
+    Matriz D;			// teste de construtor padrao
+    cout << D << endl; // nao vai imprimir nada porque a matriz e 0 por 0
+
+    Matriz E(3,3);  // teste de construtor parametrico
+    E.eye(3,3); // teste de funcao eye, faz com que a matriz vire uma matriz identidade
     cout << endl;
 
-	Matriz F;  // teste de matriz identidade invalida
-	F.eye(3,4);
-	cout << endl;
+    Matriz F;
+    F.eye(3,4);	// teste de matriz identidade invalida
+    cout << endl;
 
-	Matriz G(2,2,2);
-	cout << G << endl;
-	G.zeros();  // teste da funcao zeros
-	cout << G << endl;
+    Matriz G(2,2,2);	// teste de construtor parametrico
+    cout << G << endl;
+    G.zeros();  // teste da funcao zeros
+    cout << G << endl;
 
-	Matriz H(A);
-	cout << H << endl;
+    Matriz H(A);
+    cout << H << endl;
 
     Matriz I(2,2,1);
     Matriz J(2,2,3);
@@ -61,7 +65,7 @@ int main() {
 
     Matriz P(3,3,0);
     cout << P << endl;
-    P.ones();  // teste da funcao ones
+    P.ones();  // teste da funcao ones, que faz os valores da matriz serem todos iguais a 1
     cout << P << endl;
 
     P *= 2;  // teste de sobrecarga do operador *=
@@ -72,14 +76,21 @@ int main() {
     Matriz Q(3,3);
     cin >> Q;
     cout << Q << endl;
-    Q = ~Q;   // teste de sobrecarga do operador ~
+    Q = ~Q;   // teste de sobrecarga do operador ~, transposta da matriz
     cout << Q << endl;
 
-    A(2,1) = 10;  // teste de sobrecarga do operador ()
+    A(2,1) = 10;  // teste de sobrecarga do operador (), troca o elemento [2][1] da matriz A por 10
     cout << A << endl;
 
     cin >> A;   // teste de sobrecarga do operador >>
-	cout << A << endl;  // teste de sobrecarga do operador <<
+    cout << A << endl;  // teste de sobrecarga do operador <<
 
-	return 0;
+    Matriz R = Q;	// teste de sobrecarga de operador =
+    cout << R << endl;
+
+    int numLinhas = A.getRows();	// teste da funcao getRows
+    int numColunas = A.getCols();	// teste da funcao getCols
+    cout << "numero de linhas: " << numLinhas << " " << "e numero de colunas: " << numColunas << endl;
+
+    return 0;
 }
