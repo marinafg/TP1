@@ -22,7 +22,6 @@ class Matriz
 		int getRows() const;
 		int getCols() const;
 		void eye(int, int); // cria matriz identidade
-		float det(); // calcula o determinante
 		float trace(); // calcula o traco
 		void zeros(); // cria matriz com tds elementos iguais a 0
 		void ones();
